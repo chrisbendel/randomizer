@@ -87,9 +87,9 @@ class App extends Component {
   renderRandom = () => {
     return this.state.random.map((person, index) => {
       return (
-        <div key={index} className="random-name">
+        <p key={index} className="random-name">
           {index + 1}. {person}
-        </div>
+        </p>
       );
     });
   };
