@@ -31,20 +31,13 @@ class App extends Component {
     };
 
     this.getQuote();
-    this.getRandomFact();
   };
 
   getQuote = () => {
-    fetch('http://quotes.rest/qod.json').then(res => res.json()).then(res => {
+    fetch('https://quotes.rest/qod.json').then(res => res.json()).then(res => {
        this.setState({
          quote: res.contents.quotes[0]
        });
-    });
-  }
-
-  getRandomFact = () => {
-    fetch('https://randomuselessfact.appspot.com/random.json?language=en').then(res => res.json()).then(res => {
-      this.setState({fact: res.text});
     });
   }
 
@@ -159,9 +152,6 @@ class App extends Component {
           <Button color="success" onClick={this.generateRandom}>
             Randomize
           </Button>
-        </div>
-        <div className="random">
-          {this.state.random && this.renderRandom()}
         </div>
       </div>
     );
