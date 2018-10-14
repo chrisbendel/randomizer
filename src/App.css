@@ -37,12 +37,17 @@
   flex-direction: row;
 }
 
+.sadface {
+  height: 100px;
+  width: 100px;
+}
+
 .all {
   margin-top: 15px;
 }
 
 .generate {
-  margin-top: 50px;
+  margin-top: 15px;
 }
 
 .random {

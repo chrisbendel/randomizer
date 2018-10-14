@@ -25,9 +25,28 @@ class App extends Component {
 
     this.state = {
       people: people,
-      random: null
+      random: null,
+      quote: null,
+      fact: null
     };
+
+    this.getQuote();
+    this.getRandomFact();
   };
+
+  getQuote = () => {
+    fetch('http://quotes.rest/qod.json').then(res => res.json()).then(res => {
+       this.setState({
+         quote: res.contents.quotes[0]
+       });
+    });
+  }
+
+  getRandomFact = () => {
+    fetch('https://randomuselessfact.appspot.com/random.json?language=en').then(res => res.json()).then(res => {
+      this.setState({fact: res.text});
+    });
+  }
 
   toggleCheck = e => {
     const index = this.state.people.findIndex(p => p.name === e.target.name);
@@ -112,6 +131,18 @@ class App extends Component {
         <header className="App-header">
           <img src={random} className="App-logo" alt="logo" />
         </header>
+        {this.state.quote ? 
+          <div>
+            {this.state.quote.quote} - {this.state.quote.author}
+          </div>
+          : null
+        }
+        {this.state.fact ? 
+          <div>
+            {this.state.fact}
+          </div>
+          : null
+        }
         <div className="people">
           {this.renderPeople()}
         </div>
