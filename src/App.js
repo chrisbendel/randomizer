@@ -31,6 +31,7 @@ class App extends Component {
     };
 
     this.getQuote();
+    this.getNumberFacts();
   };
 
   getQuote = () => {
@@ -38,6 +39,12 @@ class App extends Component {
        this.setState({
          quote: res.contents.quotes[0]
        });
+    });
+  }
+
+  getNumberFacts = () => {
+    fetch('http://numbersapi.com/random/trivia?json').then(res => res.json()).then(res => {
+      console.log(res);
     });
   }
 
