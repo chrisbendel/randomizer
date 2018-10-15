@@ -153,6 +153,9 @@ class App extends Component {
             Randomize
           </Button>
         </div>
+        <div className="random">	
+          {this.state.random && this.renderRandom()}	
+        </div>
       </div>
     );
   }
