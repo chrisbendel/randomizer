@@ -31,14 +31,23 @@ class App extends Component {
     };
 
     this.getQuote();
+    this.getFact();
   };
 
   getQuote = () => {
-    fetch('https://quotes.rest/qod.json').then(res => res.json()).then(res => {
+    fetch('https://favqs.com/api/qotd').then(res => res.json()).then(res => {
        this.setState({
-         quote: res.contents.quotes[0]
+         quote: res.quote
        });
     });
+  }
+
+  getFact = () => {
+    fetch('http://randomuselessfact.appspot.com/today.json').then(res => res.json()).then(res => {
+      this.setState({
+        fact: res
+      });
+   });
   }
 
   toggleCheck = e => {
@@ -125,14 +134,14 @@ class App extends Component {
           <img src={random} className="App-logo" alt="logo" />
         </header>
         {this.state.quote ? 
-          <div>
-            {this.state.quote.quote} - {this.state.quote.author}
+          <div className="wraptext">
+            {this.state.quote.body} - {this.state.quote.author}
           </div>
           : null
         }
         {this.state.fact ? 
-          <div>
-            {this.state.fact}
+          <div className="wraptext">
+            {this.state.fact.text}
           </div>
           : null
         }
@@ -156,6 +165,7 @@ class App extends Component {
         <div className="random">	
           {this.state.random && this.renderRandom()}	
         </div>
+        <img src="https://belikebill.ga/billgen-API.php?default=1" />
       </div>
     );
   }
