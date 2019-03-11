@@ -43,7 +43,7 @@ class App extends Component {
   }
 
   getFact = () => {
-    fetch('http://randomuselessfact.appspot.com/today.json').then(res => res.json()).then(res => {
+    fetch('https://randomuselessfact.appspot.com/today.json').then(res => res.json()).then(res => {
       this.setState({
         fact: res
       });
