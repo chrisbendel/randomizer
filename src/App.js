@@ -27,7 +27,8 @@ class App extends Component {
       people: people,
       random: null,
       quote: null,
-      fact: null
+      fact: null,
+      date: new Date()
     };
 
     this.getQuote();
@@ -43,7 +44,8 @@ class App extends Component {
   }
 
   getFact = () => {
-    fetch('https://randomuselessfact.appspot.com/today.json').then(res => res.json()).then(res => {
+    const d = this.state.date;
+    fetch(`http://numbersapi.com/${d.getMonth() + 1}/${d.getDate()}/date`).then(res => res.text()).then(res => {
       this.setState({
         fact: res
       });
@@ -136,12 +138,14 @@ class App extends Component {
         {this.state.quote ? 
           <div className="wraptext">
             {this.state.quote.body} - {this.state.quote.author}
+            <hr/>
           </div>
           : null
         }
         {this.state.fact ? 
           <div className="wraptext">
-            {this.state.fact.text}
+            {this.state.fact}
+            <hr/>
           </div>
           : null
         }
