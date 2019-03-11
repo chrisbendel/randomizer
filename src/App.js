@@ -169,7 +169,7 @@ class App extends Component {
         <div className="random">	
           {this.state.random && this.renderRandom()}	
         </div>
-        <img src="https://belikebill.ga/billgen-API.php?default=1" />
+        <img alt="bill" src="https://belikebill.ga/billgen-API.php?default=1" />
       </div>
     );
   }
