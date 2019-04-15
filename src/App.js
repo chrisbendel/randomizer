@@ -27,7 +27,7 @@ class App extends Component {
       people: people,
       random: null,
       quote: null,
-      fact: null,
+      xkcd: null,
       date: new Date()
     };
 
@@ -45,12 +45,16 @@ class App extends Component {
 
   getFact = () => {
     const d = this.state.date;
-    fetch(`http://numbersapi.com/${d.getMonth() + 1}/${d.getDate()}/date`).then(res => res.text()).then(res => {
-      this.setState({
-        fact: res
-      });
+    fetch(`https://xkcd.now.sh/`).then(res => res.json()).then(res => {
+      if (res.imgRetina) {
+        this.setState({
+          xkcd: res.imgRetina
+        });
+      }  
    });
   }
+
+
 
   toggleCheck = e => {
     const index = this.state.people.findIndex(p => p.name === e.target.name);
@@ -130,6 +134,10 @@ class App extends Component {
   };
 
   render() {
+    const xkcdStyle = {
+      maxWidth: "400px",
+      maxHeight: "400px"
+    }
     return (
       <div className="App">
         <header className="App-header">
@@ -138,13 +146,6 @@ class App extends Component {
         {this.state.quote ? 
           <div className="wraptext">
             {this.state.quote.body} - {this.state.quote.author}
-            <hr/>
-          </div>
-          : null
-        }
-        {this.state.fact ? 
-          <div className="wraptext">
-            {this.state.fact}
             <hr/>
           </div>
           : null
@@ -169,7 +170,10 @@ class App extends Component {
         <div className="random">	
           {this.state.random && this.renderRandom()}	
         </div>
-        <img alt="bill" src="https://belikebill.ga/billgen-API.php?default=1" />
+        {this.state.xkcd ? 
+          <img src={this.state.xkcd} style={xkcdStyle}/>
+          : null
+        }
       </div>
     );
   }
