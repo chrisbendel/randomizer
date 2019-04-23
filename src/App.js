@@ -135,8 +135,8 @@ class App extends Component {
 
   render() {
     const xkcdStyle = {
-      maxWidth: "400px",
-      maxHeight: "400px"
+      // maxWidth: "400px",
+      // maxHeight: "400px"
     }
     return (
       <div className="App">
