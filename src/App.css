@@ -16,14 +16,6 @@
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -41,11 +33,6 @@
   justify-content: center;
   display: flex;
   flex-direction: row;
-}
-
-.sadface {
-  height: 100px;
-  width: 100px;
 }
 
 .all {

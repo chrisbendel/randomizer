@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import random from './random.png';
 import { Button } from 'reactstrap';
+import { Weather } from './components/Weather';
 import './App.css';
+import {DadJoke} from "./components/DadJoke";
 
 const people = [
   {name: 'Sam', checked: false},
@@ -17,7 +19,7 @@ const shuffleArray = array => {
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
-}
+};
 
 class App extends Component {
   constructor(props) {
@@ -27,12 +29,10 @@ class App extends Component {
       people: people,
       random: null,
       quote: null,
-      xkcd: null,
       date: new Date()
     };
 
     this.getQuote();
-    this.getFact();
   };
 
   getQuote = () => {
@@ -41,19 +41,7 @@ class App extends Component {
          quote: res.quote
        });
     });
-  }
-
-  getFact = () => {
-    const d = this.state.date;
-    fetch(`https://xkcd.now.sh/`).then(res => res.json()).then(res => {
-      if (res.imgRetina) {
-        this.setState({
-          xkcd: res.imgRetina
-        });
-      }  
-   });
-  }
-
+  };
 
 
   toggleCheck = e => {
@@ -95,9 +83,13 @@ class App extends Component {
     return this.state.people.every(person => person.checked);
   };
 
+  anySelected = () => {
+    return this.state.people.some(person => person.checked);
+  };
+
   getChecked = () => {
     return this.state.people.filter(person => person.checked);
-  }
+  };
 
   generateRandom = () => {
     const randoms = [];
@@ -134,12 +126,10 @@ class App extends Component {
   };
 
   render() {
-    const xkcdStyle = {
-      // maxWidth: "400px",
-      // maxHeight: "400px"
-    }
     return (
       <div className="App">
+        <Weather/>
+        <DadJoke/>
         <header className="App-header">
           <img src={random} className="App-logo" alt="logo" />
         </header>
@@ -163,17 +153,13 @@ class App extends Component {
           </Button>
         }
         <div className="generate">
-          <Button color="success" onClick={this.generateRandom}>
+          <Button disabled={!this.anySelected()} color="success" onClick={this.generateRandom}>
             Randomize
           </Button>
         </div>
         <div className="random">	
           {this.state.random && this.renderRandom()}	
         </div>
-        {this.state.xkcd ? 
-          <img src={this.state.xkcd} style={xkcdStyle}/>
-          : null
-        }
       </div>
     );
   }
