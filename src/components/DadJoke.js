@@ -1,12 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import {getDadJoke} from "../api";
 
 export function DadJoke() {
     const [data, setData] = useState(null);
 
-    useEffect(async () => {
-        // const joke = await getDadJoke();
-        // setData(joke);
+    async function getDadJoke() {
+        return fetch('https://icanhazdadjoke.com/', {
+            headers: {
+                'Accept': 'application/json',
+                'User-Agent': 'https://github.com/chrisbendel/randomizer'
+            }
+        }).then(res => res.json()).then(data => setData(data));
+    }
+
+    useEffect(() => {
+        getDadJoke()
     }, []);
 
     return (

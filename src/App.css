@@ -1,24 +1,9 @@
 .App {
   text-align: center;
   margin: 0 auto;
-  max-width: 50%;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: white;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
 }
 
 .wraptext {
@@ -35,16 +20,22 @@
   flex-direction: row;
 }
 
-.all {
-  margin-top: 15px;
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.generate {
-  margin-top: 15px;
+.action-buttons > button {
+  margin: 0 10px;
+  width: 150px;
 }
 
 .random {
   margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .random-name {
