@@ -5,6 +5,7 @@
   "homepage": "https://chrisbendel.github.io/randomizer",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "moment": "^2.24.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",

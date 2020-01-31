@@ -1,9 +1,14 @@
 .App {
   text-align: center;
   margin: 0 auto;
-  max-width: 60%;
+  max-width: 80%;
   display: flex;
   flex-direction: column;
+  height: 100%;
+}
+
+.App > * {
+  flex: 1;
 }
 
 .wraptext {
@@ -32,13 +37,64 @@
 }
 
 .random {
-  margin-top: 15px;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
 .random-name {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.weather-container {
+
+}
+
+.weather-city {
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.forecast-time {
+  width: 10%;
+  margin: 5px;
+  border-bottom: 1px solid black;
+}
+
+.clock {
+  background-color: black;
+  border-radius: 10px;
+  padding: 0 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.clock-font {
+  font-family: Courier;
+  font-size: 54px;
+  font-weight: bold;
+  color: greenyellow;
+}
+
+.clock-font-small {
+  font-family: Courier;
+  font-size: 24px;
+  font-weight: bold;
+  color: greenyellow;
+}
+
+.clock-info {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
 }
