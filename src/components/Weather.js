@@ -9,7 +9,7 @@ export function Weather() {
     const [data, setData] = useState(null);
 
     async function getWeather() {
-        fetch('http://api.openweathermap.org/data/2.5/forecast?zip=05446,us&units=imperial&APPID=cf3c7bcd5987d7405342cbced6febcdd', {
+        fetch('https://api.openweathermap.org/data/2.5/forecast?zip=05446,us&units=imperial&APPID=cf3c7bcd5987d7405342cbced6febcdd', {
             headers: {
                 'Accept': 'application/xml',
                 'User-Agent': 'https://github.com/chrisbendel/randomizer'
