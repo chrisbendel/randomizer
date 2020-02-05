@@ -1,12 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import * as moment from 'moment';
 
 export function Clock() {
     const [time, setTime] = useState(moment());
 
-    setInterval(() => {
-        setTime(moment());
-    }, 1000);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTime(moment());
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <div className="clock">
